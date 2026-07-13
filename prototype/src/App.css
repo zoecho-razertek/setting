@@ -1,0 +1,10 @@
+/* App.css — setting */
+
+.app-root {
+  width: 393px;
+  min-height: 852px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--color-base-white-blue);
+  overflow: hidden;
+}

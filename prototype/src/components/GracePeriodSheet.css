@@ -1,0 +1,135 @@
+/* GracePeriodSheet.css — prefix: gps- */
+
+.gps-page {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.gps-status {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.gps-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+.gps-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.gps-titlebar {
+  flex-shrink: 0;
+  position: relative;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gps-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gps-title {
+  font-size: var(--font-size-h2, 18px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.gps-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gps-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gps-cell {
+  height: 61px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-base-grey-card, #fefefe);
+  border: none;
+  border-bottom: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  flex-shrink: 0;
+}
+.gps-table > :last-child {
+  border-bottom: none;
+}
+.gps-cell:active {
+  background: rgba(0, 0, 0, 0.04);
+}
+.gps-cell-label {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+.gps-cell-check {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ── Hint ────────────────────────────────────────────────────────────────── */
+.gps-hint {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 32px 32px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+.gps-hint-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.gps-hint-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gps-hint-text p {
+  margin: 0;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-main, #333);
+  line-height: 1.5;
+}

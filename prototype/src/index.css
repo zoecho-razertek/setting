@@ -1,0 +1,88 @@
+/* ── Reset & base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'PingFang TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+img {
+  display: block;
+}
+
+/* ── Design tokens (source: design.md) ──────────────────────────────────────── */
+:root {
+  /* Primary */
+  --color-primary-blue-main:    #3a6ea5;
+  --color-primary-blue-press:   #204367;
+  --color-primary-blue-disable: #d4e2ea;
+
+  /* Base White */
+  --color-base-white-main:            #ffffff;
+  --color-base-white-transparent:     rgba(255, 255, 255, 0.5);
+  --color-base-white-second:          #f0f0f0;
+  --color-base-white-edit:            #f7f7f7;
+  --color-base-white-trans50:         rgba(255, 255, 255, 0.5);
+  --color-base-white-trans90:         rgba(255, 255, 255, 0.9);
+  --color-base-white-blue:            #e1e9f0;
+  --color-base-white-gradient-light:  #e6f0f7;
+  --color-base-white-gradient-dark:   #c9d4e3;
+
+  /* Base Grey */
+  --color-base-grey-divider: #c2c2c2;
+  --color-base-grey-input:   #d9d9d9;
+  --color-base-grey-card:    #fefefe;
+
+  /* Text */
+  --color-text-main:        #333333;
+  --color-text-secondary:   #666666;
+  --color-text-placeholder: #999999;
+  --color-text-link:        #2e739e;
+  --color-text-unfocus:     #8aadc2;
+  --color-text-white:       #ffffff;
+
+  /* Notice */
+  --color-base-notice-success:     #337c05;
+  --color-base-notice-error:       #dd330d;
+  --color-base-notice-notify:      #dd9f18;
+  --color-base-notice-warning:     #ff9583;
+  --color-base-notice-success-tag: #c5dcb6;
+  --color-base-notice-warning-tag: #f1ceb1;
+  --color-base-notice-blue-tag:    #cee4f1;
+
+  /* Secondary */
+  --color-secondary-yellow: #facd6d;
+  --color-secondary-blue:   #0578b5;
+
+  /* Typography */
+  --font-semibold-h1:  600 24px 'PingFang TC', sans-serif;
+  --font-medium-h1:    500 24px 'PingFang TC', sans-serif;
+  --font-regular-h2:   400 20px 'PingFang TC', sans-serif;
+  --font-medium-p1:    500 16px 'PingFang TC', sans-serif;
+  --font-regular-p1:   400 15px 'PingFang TC', sans-serif;
+  --font-regulare-p2:  400 14px 'PingFang TC', sans-serif;
+  --font-semibold-p3:  600 12px 'PingFang TC', sans-serif;
+  --font-regular-p3:   400 12px 'PingFang TC', sans-serif;
+  --font-regular-s1:   400 10px 'PingFang TC', sans-serif;
+  --font-regular-s2:   400  9px 'PingFang TC', sans-serif;
+
+  /* Font size only */
+  --font-size-h1: 24px;
+  --font-size-h2: 20px;
+  --font-size-p1: 16px;
+  --font-size-p2: 15px;
+  --font-size-p3: 14px;
+  --font-size-p4: 12px;
+  --font-size-s1: 10px;
+  --font-size-s2: 9px;
+}

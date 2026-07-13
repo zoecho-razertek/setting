@@ -1,0 +1,138 @@
+/* BankCodeSheet.css — prefix: bcs- */
+
+.bcs-page {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.bcs-status {
+  flex-shrink: 0;
+  height: 44px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.bcs-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+.bcs-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.bcs-titlebar {
+  flex-shrink: 0;
+  position: relative;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bcs-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bcs-title {
+  font-size: var(--font-size-h2, 18px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+}
+
+/* ── Search ──────────────────────────────────────────────────────────────── */
+.bcs-search-wrap {
+  flex-shrink: 0;
+  padding: 0 32px 12px;
+  box-sizing: border-box;
+}
+.bcs-search-box {
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 4px;
+  background: var(--color-base-grey-card, #fefefe);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.bcs-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-main, #333);
+  font-family: inherit;
+}
+.bcs-search-input::placeholder {
+  color: var(--color-text-placeholder, #999);
+}
+.bcs-search-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.bcs-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bcs-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bcs-cell {
+  height: 61px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  background: var(--color-base-grey-card, #fefefe);
+  border: none;
+  border-bottom: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  flex-shrink: 0;
+}
+.bcs-table > :last-child {
+  border-bottom: none;
+}
+.bcs-cell:active {
+  background: rgba(0, 0, 0, 0.04);
+}
+.bcs-cell-label {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}

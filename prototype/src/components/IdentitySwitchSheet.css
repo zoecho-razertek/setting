@@ -1,0 +1,102 @@
+/* IdentitySwitchSheet.css — prefix: iss- */
+
+.iss-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.iss-sheet {
+  width: 100%;
+  background: var(--color-base-white-main, #fff);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  animation: iss-slide-up 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes iss-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.iss-grabber {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-base-grey-input, #d9d9d9);
+}
+
+.iss-title {
+  margin: 0;
+  font-size: var(--font-size-h1, 24px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+  text-align: center;
+}
+
+.iss-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iss-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  border-radius: 12px;
+  background: var(--color-base-white-main, #fff);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.iss-card--selected {
+  border: 2px solid var(--color-primary-blue-main, #3a6ea5);
+  background: rgba(58, 110, 165, 0.08);
+}
+
+.iss-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.iss-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.iss-name {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+.iss-role {
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-secondary, #666);
+  white-space: nowrap;
+}
+
+.iss-check {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}

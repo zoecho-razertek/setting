@@ -1,0 +1,41 @@
+/* BigToast.css — prefix: bgt-
+   可跨專案引用；所有顏色使用 fallback 值，不依賴專案 CSS 變數。 */
+
+.bgt-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.bgt-box {
+  min-width: 160px;
+  padding: 12px 32px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.bgt-icon {
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.bgt-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.5;
+}

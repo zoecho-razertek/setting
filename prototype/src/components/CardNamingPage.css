@@ -1,0 +1,141 @@
+/* CardNamingPage.css — prefix: cnp- */
+
+.cnp-page {
+  position: absolute;
+  inset: 0;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.cnp-status {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0;
+}
+.cnp-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main, #333);
+}
+.cnp-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.cnp-titlebar {
+  flex-shrink: 0;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 44px;
+}
+.cnp-title {
+  font-size: var(--font-size-h2, 20px);
+  color: var(--color-text-main, #333);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.cnp-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.cnp-info-text {
+  margin: 0;
+  width: 100%;
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  line-height: 1.4;
+}
+
+.cnp-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cnp-field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cnp-field-label {
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-main, #333);
+}
+.cnp-field-counter {
+  font-size: var(--font-size-p4, 12px);
+  color: var(--color-text-placeholder, #999);
+}
+.cnp-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 4px;
+  background: var(--color-base-grey-card, #fefefe);
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-main, #333);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.cnp-input::placeholder {
+  color: var(--color-text-placeholder, #999);
+}
+.cnp-input:focus {
+  outline: none;
+  border-color: var(--color-primary-blue-main, #3a6ea5);
+}
+
+.cnp-illustration {
+  width: 280px;
+  max-width: 100%;
+}
+
+/* ── Bottom actions ──────────────────────────────────────────────────────── */
+.cnp-bottom {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 44px 40px;
+}
+.cnp-primary-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-primary-blue-main, #3a6ea5);
+  color: var(--color-text-white, #fff);
+  font-size: var(--font-size-p2, 15px);
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+.cnp-primary-btn:disabled {
+  background: var(--color-primary-blue-disable, #d4e2ea);
+  cursor: default;
+}
+.cnp-text-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-placeholder, #999);
+  font-family: inherit;
+  cursor: pointer;
+}

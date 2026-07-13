@@ -1,0 +1,123 @@
+/* ChangePhonePage.css — prefix: chp- */
+
+.chp-page {
+  position: absolute;
+  inset: 0;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.chp-status {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0;
+}
+.chp-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main, #333);
+}
+.chp-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.chp-titlebar {
+  position: relative;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.chp-back-btn {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.chp-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chp-heading {
+  margin: 0 0 4px;
+  font-size: var(--font-size-h1, 24px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+}
+
+.chp-subtitle {
+  margin: 0 0 18px;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-secondary, #666);
+}
+
+.chp-input-row {
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 4px;
+  background: var(--color-base-grey-card, #fefefe);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+}
+.chp-input-row:focus-within {
+  border-color: var(--color-primary-blue-main, #3a6ea5);
+}
+.chp-input-prefix {
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-main, #333);
+}
+.chp-input-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--color-base-grey-divider, #c2c2c2);
+}
+.chp-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-main, #333);
+  font-family: inherit;
+}
+.chp-input::placeholder {
+  color: var(--color-text-placeholder, #999);
+}
+
+.chp-continue-btn {
+  margin-top: 24px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-primary-blue-main, #3a6ea5);
+  color: var(--color-text-white, #fff);
+  font-size: var(--font-size-p2, 15px);
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+.chp-continue-btn:disabled {
+  background: var(--color-primary-blue-disable, #d4e2ea);
+  cursor: default;
+}

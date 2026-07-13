@@ -1,0 +1,104 @@
+/* NumberFieldSheet.css — prefix: nfs- */
+
+.nfs-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.nfs-sheet {
+  width: 100%;
+  background: var(--color-base-white-main, #fff);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 32px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  animation: nfs-slide-up 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes nfs-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.nfs-grabber {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-base-grey-input, #d9d9d9);
+}
+
+.nfs-title {
+  margin: 0;
+  font-size: var(--font-size-h1, 24px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+  text-align: center;
+}
+
+.nfs-description {
+  margin: 0;
+  width: 100%;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-main, #333);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.nfs-input-row {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 4px;
+  background: var(--color-base-grey-card, #fefefe);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.nfs-input-row:focus-within {
+  border-color: var(--color-primary-blue-main, #3a6ea5);
+}
+.nfs-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-main, #333);
+  font-family: inherit;
+}
+.nfs-suffix {
+  flex-shrink: 0;
+  font-size: var(--font-size-p2, 15px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+
+.nfs-save-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-primary-blue-main, #3a6ea5);
+  color: var(--color-text-white, #fff);
+  font-size: var(--font-size-p1, 16px);
+  font-family: inherit;
+  cursor: pointer;
+}
+.nfs-save-btn:active {
+  background: var(--color-primary-blue-press, #204367);
+}
+.nfs-save-btn:disabled {
+  background: var(--color-primary-blue-disable, #d4e2ea);
+  cursor: default;
+}

@@ -1,0 +1,159 @@
+/* PaymentMethodPage.css — prefix: pmp- */
+
+.pmp-page {
+  position: absolute;
+  inset: 0;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.pmp-status {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0;
+}
+.pmp-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main, #333);
+}
+.pmp-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.pmp-titlebar {
+  position: relative;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pmp-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+.pmp-title {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+}
+.pmp-add-icon-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.pmp-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.pmp-section {
+  display: flex;
+  flex-direction: column;
+}
+.pmp-section-title {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-secondary, #666);
+}
+
+.pmp-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.pmp-cell {
+  width: 100%;
+  padding: 24px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--color-base-grey-card, #fefefe);
+  border: none;
+  border-bottom: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.pmp-cell:active {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pmp-cell-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.pmp-cell-main--inactive .pmp-cell-name,
+.pmp-cell-main--inactive .pmp-cell-label {
+  color: var(--color-text-placeholder, #999);
+}
+.pmp-cell-name {
+  margin: 0;
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+.pmp-cell-label {
+  margin: 0;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-placeholder, #999);
+  white-space: nowrap;
+}
+.pmp-tag {
+  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: var(--color-secondary-yellow, #facd6d);
+  font-size: var(--font-size-s2, 9px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+
+.pmp-edit-icon {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.pmp-apply-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-link, #2e739e);
+  white-space: nowrap;
+}

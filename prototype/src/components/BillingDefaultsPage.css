@@ -1,0 +1,146 @@
+/* BillingDefaultsPage.css — prefix: bdp- */
+
+.bdp-page {
+  position: absolute;
+  inset: 0;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ──────────────────────────────────────────────────────────── */
+.bdp-status {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0;
+}
+.bdp-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main, #333);
+}
+.bdp-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Title bar ───────────────────────────────────────────────────────────── */
+.bdp-titlebar {
+  position: relative;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bdp-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+.bdp-title {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.bdp-scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bdp-section {
+  display: flex;
+  flex-direction: column;
+}
+.bdp-section-title {
+  height: 21px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  font-size: var(--font-size-p3, 14px);
+  color: var(--color-text-secondary, #666);
+}
+
+.bdp-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.bdp-cell {
+  height: 61px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-base-grey-card, #fefefe);
+  border: none;
+  border-bottom: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+.bdp-table > :last-child {
+  border-bottom: none;
+}
+.bdp-cell:active {
+  background: rgba(0, 0, 0, 0.04);
+}
+.bdp-cell-label {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+.bdp-cell-info {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.bdp-cell-value {
+  font-size: var(--font-size-p1, 16px);
+  white-space: nowrap;
+}
+.bdp-cell-value--placeholder {
+  color: var(--color-text-placeholder, #999);
+}
+.bdp-cell-value--success {
+  color: var(--color-base-notice-success, #337c05);
+}
+.bdp-cell-arrow {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ── Hint ────────────────────────────────────────────────────────────────── */
+.bdp-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 16px;
+}
+.bdp-hint-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.bdp-hint-text {
+  margin: 0;
+  font-size: var(--font-size-p4, 12px);
+  color: var(--color-text-main, #333);
+  line-height: 1.5;
+}
