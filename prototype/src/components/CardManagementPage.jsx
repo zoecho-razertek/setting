@@ -12,11 +12,12 @@ import imgCardKey       from '../assets/Card_key.png'
  * Props:
  *   cards       {Array<{id, name}>} 已綁定的卡片列表
  *   onBack      {function} () => void
+ *   hideAddButton {boolean}  是否隱藏有資料時右上角新增按鈕
  *   onAddCard   {function} () => void
  *   onTutorial  {function} () => void
  *   onCardSelect {function} (id) => void
  */
-export default function CardManagementPage({ cards = [], onBack, onAddCard, onTutorial, onCardSelect }) {
+export default function CardManagementPage({ cards = [], hideAddButton = false, onBack, onAddCard, onTutorial, onCardSelect }) {
   const hasCards = cards.length > 0
 
   return (
@@ -51,7 +52,7 @@ export default function CardManagementPage({ cards = [], onBack, onAddCard, onTu
           <img src={icBasicArrowBack} alt="" width={24} height={24} />
         </button>
         <span className="cmp-title">卡片管理</span>
-        {hasCards && (
+        {hasCards && !hideAddButton && (
           <button className="cmp-add-icon-btn" onClick={onAddCard}>
             <img src={icBasicAdd} alt="" width={24} height={24} />
           </button>
@@ -60,7 +61,7 @@ export default function CardManagementPage({ cards = [], onBack, onAddCard, onTu
 
       {/* Body */}
       {hasCards ? (
-        <div className="cmp-scroll">
+        <div className="cmp-scroll cmp-scroll--cards">
           <div className="cmp-card-list">
             {cards.map(card => (
               <button key={card.id} className="cmp-card" onClick={() => onCardSelect?.(card.id)}>

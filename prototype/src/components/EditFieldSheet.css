@@ -116,6 +116,27 @@
   flex-shrink: 0;
 }
 
+.efs-image-field {
+  width: 100%;
+  height: 176px;
+  padding: 0;
+  border: 1px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 4px;
+  background: var(--color-base-white-edit, #f7f7f7);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.efs-image-field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.efs-image-input-hidden {
+  display: none;
+}
+
 .efs-field-description {
   margin: -12px 0 0;
   font: var(--font-regulare-p2, 400 14px 'PingFang TC', sans-serif);

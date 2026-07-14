@@ -1,0 +1,138 @@
+/* AppSettingsPage.css — prefix: asp- */
+
+.asp-page {
+  position: absolute;
+  inset: 0;
+  background: var(--color-base-white-blue, #e1e9f0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.asp-status {
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 0;
+}
+
+.asp-status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main, #333);
+}
+
+.asp-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.asp-titlebar {
+  position: relative;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asp-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.asp-title {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+}
+
+.asp-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.asp-section-title {
+  height: 32px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary, #666);
+  font-size: var(--font-size-p4, 12px);
+}
+
+.asp-cell {
+  width: 100%;
+  height: 61px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-bottom: 1px solid var(--color-base-grey-divider, #c2c2c2);
+  background: var(--color-base-grey-card, #fefefe);
+  font-family: inherit;
+  text-align: left;
+}
+
+.asp-cell:active {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.asp-cell-label {
+  color: var(--color-text-main, #333);
+  font-size: var(--font-size-p1, 16px);
+  white-space: nowrap;
+}
+
+.asp-cell-info {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.asp-cell-value {
+  color: var(--color-text-placeholder, #999);
+  font-size: var(--font-size-p1, 16px);
+  white-space: nowrap;
+}
+
+.asp-cell-arrow {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.asp-switch {
+  width: 51px;
+  height: 31px;
+  padding: 2px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--color-base-grey-input, #d9d9d9);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background 0.18s;
+}
+
+.asp-switch--on {
+  background: #34c759;
+  justify-content: flex-end;
+}
+
+.asp-switch-thumb {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}

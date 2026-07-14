@@ -12,11 +12,12 @@ import EditFieldSheet   from './EditFieldSheet'
  *
  * Props:
  *   card     {object}   { id, name, cardId, activatedAt }
- *   onBack   {function} () => void
- *   onRename {function} (id, name) => void
- *   onDelete {function} (id) => void
+ *   hideDelete {boolean}  是否隱藏右上角刪除按鈕
+ *   onBack     {function} () => void
+ *   onRename   {function} (id, name) => void
+ *   onDelete   {function} (id) => void
  */
-export default function CardEditPage({ card, onBack, onRename, onDelete }) {
+export default function CardEditPage({ card, hideDelete = false, onBack, onRename, onDelete }) {
   const [editingName, setEditingName] = useState(false)
 
   return (
@@ -51,9 +52,11 @@ export default function CardEditPage({ card, onBack, onRename, onDelete }) {
           <img src={icBasicArrowBack} alt="" width={24} height={24} />
         </button>
         <span className="cep-title">卡片管理</span>
-        <button className="cep-delete-btn" onClick={() => onDelete?.(card.id)}>
-          <img src={icBasicTrash} alt="" width={24} height={24} />
-        </button>
+        {!hideDelete && (
+          <button className="cep-delete-btn" onClick={() => onDelete?.(card.id)}>
+            <img src={icBasicTrash} alt="" width={24} height={24} />
+          </button>
+        )}
       </div>
 
       {/* Body */}
@@ -77,13 +80,13 @@ export default function CardEditPage({ card, onBack, onRename, onDelete }) {
             <div className="cep-cell">
               <span className="cep-cell-label">卡片 ID</span>
               <span className="cep-cell-info">
-                <span className="cep-cell-value cep-cell-value--placeholder">{card.cardId}</span>
+                <span className="cep-cell-value">{card.cardId}</span>
               </span>
             </div>
             <div className="cep-cell">
               <span className="cep-cell-label">啟用時間</span>
               <span className="cep-cell-info">
-                <span className="cep-cell-value cep-cell-value--placeholder">{card.activatedAt}</span>
+                <span className="cep-cell-value">{card.activatedAt}</span>
               </span>
             </div>
           </div>

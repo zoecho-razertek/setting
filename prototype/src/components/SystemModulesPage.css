@@ -101,8 +101,136 @@
   color: var(--color-base-notice-success, #337c05);
   white-space: nowrap;
 }
+.smp-cell-value--disabled {
+  color: var(--color-text-placeholder, #999);
+}
 .smp-cell-arrow {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+}
+
+/* ── Billing system sheet ───────────────────────────────────────────────── */
+.smp-sheet-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.smp-sheet {
+  width: 100%;
+  min-height: 356px;
+  padding: 16px 32px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background: var(--color-base-white-main, #fff);
+  border-radius: 20px 20px 0 0;
+  box-sizing: border-box;
+  animation: smp-slide-up 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes smp-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.smp-sheet-grabber {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-base-grey-input, #d9d9d9);
+}
+
+.smp-sheet-title {
+  margin: 0;
+  font-size: var(--font-size-h1, 24px);
+  font-weight: 500;
+  color: var(--color-text-main, #333);
+  text-align: center;
+}
+
+.smp-sheet-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.smp-sheet-copy p {
+  margin: 0;
+  font-size: var(--font-size-p3, 14px);
+  line-height: 1.5;
+  color: var(--color-text-main, #333);
+}
+
+.smp-sheet-options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.smp-sheet-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.smp-radio-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.smp-radio-dot {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--color-base-grey-input, #d9d9d9);
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.smp-radio-input:checked + .smp-radio-dot {
+  border-color: var(--color-primary-blue-main, #3a6ea5);
+}
+
+.smp-radio-input:checked + .smp-radio-dot::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--color-primary-blue-main, #3a6ea5);
+}
+
+.smp-option-label {
+  font-size: var(--font-size-p1, 16px);
+  color: var(--color-text-main, #333);
+  white-space: nowrap;
+}
+
+.smp-sheet-save {
+  width: 100%;
+  height: 48px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--color-primary-blue-main, #3a6ea5);
+  color: var(--color-text-white, #fff);
+  font-family: inherit;
+  font-size: var(--font-size-p1, 16px);
+  cursor: pointer;
+}
+
+.smp-sheet-save:active {
+  background: var(--color-primary-blue-press, #204367);
 }

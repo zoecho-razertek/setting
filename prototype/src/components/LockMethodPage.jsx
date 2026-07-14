@@ -1,19 +1,27 @@
+import { useState } from 'react'
 import './LockMethodPage.css'
 import icBasicArrowBack from '../assets/ic_basic_arrow_back.png'
 import icBasicArrowNext from '../assets/ic_basic_arrow_next.png'
 import icCellCard       from '../assets/ic_cell_card.png'
 import icCellLock01     from '../assets/ic_cell_lock01.png'
 import icBasicInfoSmall from '../assets/ic_basic_info_small.png'
+import icInputEyeClose  from '../assets/ic_input_eye_close.png'
+import icInputEyeOpen   from '../assets/ic_input_eye_open.png'
 
 /**
  * LockMethodPage — 個人密碼與開鎖方式設定頁
  * Figma: 11.3b.0_開門密碼_個人端 (node 1614:22372)
  *
  * Props:
+ *   cardCount    {number}    已綁定卡片數
+ *   isCorporate  {boolean}   是否為團隊端
  *   onBack       {function}  () => void
  *   onCellSelect {function}  (action: string) => void
  */
-export default function LockMethodPage({ onBack, onCellSelect }) {
+export default function LockMethodPage({ cardCount = 0, isCorporate = false, onBack, onCellSelect }) {
+  const [showCorporatePassword, setShowCorporatePassword] = useState(false)
+  const corporatePassword = '0012300'
+
   return (
     <div className="plm-page">
 
@@ -60,7 +68,7 @@ export default function LockMethodPage({ onBack, onCellSelect }) {
                 <span className="plm-cell-label">卡片管理</span>
               </span>
               <span className="plm-cell-info">
-                <span className="plm-cell-value plm-cell-value--placeholder">0 張卡片</span>
+                <span className="plm-cell-value plm-cell-value--placeholder">{cardCount} 張卡片</span>
                 <img src={icBasicArrowNext} alt="" className="plm-cell-arrow" />
               </span>
             </button>
@@ -70,14 +78,29 @@ export default function LockMethodPage({ onBack, onCellSelect }) {
         <div className="plm-section">
           <span className="plm-section-title">密碼開鎖</span>
           <div className="plm-card-group">
-            <button className="plm-cell" onClick={() => onCellSelect?.('doorPassword')}>
+            <button
+              className={`plm-cell${isCorporate ? ' plm-cell--no-active-bg' : ''}`}
+              onClick={() => {
+                if (isCorporate) {
+                  setShowCorporatePassword(prev => !prev)
+                } else {
+                  onCellSelect?.('doorPassword')
+                }
+              }}
+            >
               <span className="plm-cell-main">
                 <img src={icCellLock01} alt="" className="plm-cell-icon" />
                 <span className="plm-cell-label">開門密碼</span>
               </span>
-              <span className="plm-cell-info">
-                <span className="plm-cell-value plm-cell-value--placeholder">00***00</span>
-                <img src={icBasicArrowNext} alt="" className="plm-cell-arrow" />
+              <span className={`plm-cell-info${isCorporate ? ' plm-cell-info--password-toggle' : ''}`}>
+                <span className="plm-cell-value plm-cell-value--placeholder">
+                  {isCorporate && showCorporatePassword ? corporatePassword : '00***00'}
+                </span>
+                <img
+                  src={isCorporate ? (showCorporatePassword ? icInputEyeOpen : icInputEyeClose) : icBasicArrowNext}
+                  alt=""
+                  className="plm-cell-arrow"
+                />
               </span>
             </button>
           </div>

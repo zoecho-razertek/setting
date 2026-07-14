@@ -13,16 +13,28 @@ function formatDate(raw) {
  * Figma: 3.7e.1_基本設定_電子鎖名稱 (node 5148:96971，套用於姓名／生日欄位編輯)
  *
  * Props:
- *   field  {object}  { key, title, label, type: 'text'|'date', value, maxLength?, description? }
+ *   field  {object}  { key, title, label, type: 'text'|'date', value, maxLength?, description?, imageField? }
  *   onSave {function} (value: string) => void
  *   onClose {function} () => void
  */
 export default function EditFieldSheet({ field, onSave, onClose }) {
   const [value, setValue] = useState(field.value || '')
+  const [imagePreview, setImagePreview] = useState(field.imageField?.src || '')
   const dateInputRef = useRef(null)
+  const imageInputRef = useRef(null)
 
   const openDatePicker = () => {
     try { dateInputRef.current?.showPicker() } catch { dateInputRef.current?.click() }
+  }
+
+  const openImagePicker = () => {
+    imageInputRef.current?.click()
+  }
+
+  const handleImageChange = (event) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    setImagePreview(URL.createObjectURL(file))
   }
 
   return (
@@ -65,6 +77,24 @@ export default function EditFieldSheet({ field, onSave, onClose }) {
             />
           )}
         </div>
+
+        {field.imageField && (
+          <div className="efs-field">
+            <div className="efs-field-label-row">
+              <span className="efs-field-label">{field.imageField.label}</span>
+            </div>
+            <button className="efs-image-field" type="button" onClick={openImagePicker}>
+              <img src={imagePreview} alt="" className="efs-image-field-img" />
+            </button>
+            <input
+              ref={imageInputRef}
+              type="file"
+              accept="image/*"
+              className="efs-image-input-hidden"
+              onChange={handleImageChange}
+            />
+          </div>
+        )}
 
         <button className="efs-save-btn" onClick={() => onSave(value)}>儲存</button>
       </div>

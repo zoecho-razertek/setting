@@ -99,6 +99,9 @@
 .plm-cell:active {
   background: rgba(0, 0, 0, 0.04);
 }
+.plm-cell--no-active-bg:active {
+  background: transparent;
+}
 .plm-cell-main {
   display: flex;
   align-items: center;
@@ -118,6 +121,12 @@
   display: flex;
   align-items: center;
   gap: 2px;
+}
+.plm-cell-info--password-toggle {
+  gap: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: var(--color-base-white-edit, #F7F7F7);
 }
 .plm-cell-value {
   font-size: var(--font-size-p1, 16px);

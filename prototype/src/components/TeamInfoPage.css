@@ -1,0 +1,21 @@
+/* TeamInfoPage.css — prefix: tip- */
+
+.tip-scroll {
+  padding-top: 0;
+}
+
+.tip-table {
+  margin-top: 0;
+}
+
+.tip-cell--gap-before {
+  margin-top: 12px;
+}
+
+.tip-company-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+}

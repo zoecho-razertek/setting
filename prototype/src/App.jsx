@@ -3,6 +3,11 @@ import './index.css'
 import './App.css'
 import SettingHomePage     from './components/SettingHomePage'
 import PersonalInfoPage    from './components/PersonalInfoPage'
+import TeamInfoPage        from './components/TeamInfoPage'
+import TeamMembersPage     from './components/TeamMembersPage'
+import TeamMemberInfoPage  from './components/TeamMemberInfoPage'
+import AppSettingsPage     from './components/AppSettingsPage'
+import HomeShortcutPage    from './components/HomeShortcutPage'
 import ChangePasswordPage  from './components/ChangePasswordPage'
 import ChangePhonePage     from './components/ChangePhonePage'
 import OtpVerificationPage from './components/OtpVerificationPage'
@@ -24,11 +29,23 @@ function formatTimestamp(date) {
   return `${date.getFullYear()}/${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`
 }
 
+const TEAM_CARDS = [
+  {
+    id: 'team-card-1',
+    name: '永慶房屋卡片',
+    cardId: '1865204',
+    activatedAt: '2026/07/14 09:41:00',
+  },
+]
+
 export default function App() {
   const [page, setPage]   = useState('settingHome')
   const [toastText, setToastText] = useState(null)
   const [cards, setCards] = useState([])
   const [selectedCardId, setSelectedCardId] = useState(null)
+  const [selectedTeamMemberId, setSelectedTeamMemberId] = useState(null)
+  const [currentIdentity, setCurrentIdentity] = useState('personal')
+  const [isCorporateMode, setIsCorporateMode] = useState(false)
 
   const saveAndReturn = (message = '已儲存', targetPage = 'personalInfo') => {
     setPage(targetPage)
@@ -39,9 +56,25 @@ export default function App() {
     <div className="app-root">
       {page === 'settingHome' && (
         <SettingHomePage
+          currentIdentity={currentIdentity}
+          onIdentityChange={setCurrentIdentity}
           onCellSelect={action => {
             if (action === 'profile')         setPage('personalInfo')
-            if (action === 'personalPassword') setPage('lockMethod')
+            if (action === 'teamInfo') {
+              setPage('teamInfo')
+            }
+            if (action === 'teamMembers') {
+              setPage('teamMembers')
+            }
+            if (action === 'personalPassword') {
+              setIsCorporateMode(false)
+              setPage('lockMethod')
+            }
+            if (action === 'corporatePassword') {
+              setIsCorporateMode(true)
+              setPage('lockMethod')
+            }
+            if (action === 'appSetting')      setPage('appSettings')
             if (action === 'leaseSetting')     setPage('leaseSetting')
           }}
         />
@@ -54,6 +87,41 @@ export default function App() {
             if (label === '手機號碼')     setPage('changePhone')
           }}
           onSaved={() => setToastText('已儲存')}
+        />
+      )}
+      {page === 'teamInfo' && (
+        <TeamInfoPage
+          identityId={currentIdentity}
+          onBack={() => setPage('settingHome')}
+          onSaved={() => setToastText('已儲存')}
+        />
+      )}
+      {page === 'teamMembers' && (
+        <TeamMembersPage
+          onBack={() => setPage('settingHome')}
+          onMemberSelect={id => {
+            setSelectedTeamMemberId(id)
+            setPage('teamMemberInfo')
+          }}
+        />
+      )}
+      {page === 'teamMemberInfo' && (
+        <TeamMemberInfoPage
+          memberId={selectedTeamMemberId}
+          onBack={() => setPage('teamMembers')}
+          onCopied={() => setToastText('已複製！')}
+        />
+      )}
+      {page === 'appSettings' && (
+        <AppSettingsPage
+          onBack={() => setPage('settingHome')}
+          onShortcutSelect={() => setPage('homeShortcut')}
+        />
+      )}
+      {page === 'homeShortcut' && (
+        <HomeShortcutPage
+          onBack={() => setPage('appSettings')}
+          onSaved={() => saveAndReturn('已儲存', 'appSettings')}
         />
       )}
       {page === 'changePassword' && (
@@ -74,6 +142,8 @@ export default function App() {
       {page === 'lockMethod' && (
         <LockMethodPage
           onBack={() => setPage('settingHome')}
+          cardCount={isCorporateMode ? TEAM_CARDS.length : cards.length}
+          isCorporate={isCorporateMode}
           onCellSelect={action => {
             if (action === 'doorPassword')    setPage('doorPassword')
             if (action === 'cardManagement')  setPage('cardManagement')
@@ -88,7 +158,8 @@ export default function App() {
       )}
       {page === 'cardManagement' && (
         <CardManagementPage
-          cards={cards}
+          cards={isCorporateMode ? TEAM_CARDS : cards}
+          hideAddButton={isCorporateMode}
           onBack={() => setPage('lockMethod')}
           onAddCard={() => setPage('bindCard')}
           onCardSelect={id => { setSelectedCardId(id); setPage('cardEdit') }}
@@ -114,9 +185,10 @@ export default function App() {
           onBindAnother={() => setPage('bindCard')}
         />
       )}
-      {page === 'cardEdit' && cards.some(c => c.id === selectedCardId) && (
+      {page === 'cardEdit' && (isCorporateMode ? TEAM_CARDS : cards).some(c => c.id === selectedCardId) && (
         <CardEditPage
-          card={cards.find(c => c.id === selectedCardId)}
+          card={(isCorporateMode ? TEAM_CARDS : cards).find(c => c.id === selectedCardId)}
+          hideDelete={isCorporateMode}
           onBack={() => setPage('cardManagement')}
           onRename={(id, name) => setCards(prev => prev.map(c => c.id === id ? { ...c, name } : c))}
           onDelete={id => {
@@ -155,7 +227,10 @@ export default function App() {
         <PaymentMethodPage onBack={() => setPage('billingDefaults')} />
       )}
       {page === 'systemModules' && (
-        <SystemModulesPage onBack={() => setPage('leaseSetting')} />
+        <SystemModulesPage
+          onBack={() => setPage('leaseSetting')}
+          onSaved={() => setToastText('已儲存')}
+        />
       )}
 
       <BigToast

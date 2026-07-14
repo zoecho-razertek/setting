@@ -30,7 +30,7 @@ const LANDLORD_CELLS = [
 
 const TEAM_CELLS = [
   { label: '團隊資訊',             sub: '公司團隊資料、身份、權限',                   divider: true,  action: 'teamInfo' },
-  { label: '法人密碼與開鎖方式設定', sub: '公司業務使用，設定適用所有電子鎖的密碼、卡片', divider: true,  action: 'corporatePassword' },
+  { label: '法人密碼與卡片', sub: '公司業務使用，設定適用所有電子鎖的密碼、卡片', divider: true,  action: 'corporatePassword' },
   { label: '團隊成員',             sub: '公司團隊中的成員',                          divider: false, action: 'teamMembers' },
 ]
 
@@ -55,8 +55,7 @@ const TABS = [
  *   onCellSelect {function}  (action: string) => void
  *   onTabChange  {function}  (tab: 'home'|'message'|'notification'|'mine') => void
  */
-export default function SettingHomePage({ onCellSelect, onTabChange }) {
-  const [currentIdentity, setCurrentIdentity] = useState('personal')
+export default function SettingHomePage({ currentIdentity = 'personal', onIdentityChange, onCellSelect, onTabChange }) {
   const [showIdentitySwitch, setShowIdentitySwitch] = useState(false)
 
   const identity = IDENTITIES.find(i => i.id === currentIdentity) ?? IDENTITIES[0]
@@ -195,7 +194,7 @@ export default function SettingHomePage({ onCellSelect, onTabChange }) {
       {showIdentitySwitch && (
         <IdentitySwitchSheet
           currentId={currentIdentity}
-          onSelect={id => { setCurrentIdentity(id); setShowIdentitySwitch(false) }}
+          onSelect={id => { onIdentityChange?.(id); setShowIdentitySwitch(false) }}
           onClose={() => setShowIdentitySwitch(false)}
         />
       )}

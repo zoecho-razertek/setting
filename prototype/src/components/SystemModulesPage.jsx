@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './SystemModulesPage.css'
 import icBasicArrowBack from '../assets/ic_basic_arrow_back.png'
 import icBasicArrowNext from '../assets/ic_basic_arrow_next.png'
@@ -6,6 +7,53 @@ const CELLS = [
   { label: '帳務系統', value: '已啟用', action: 'billingSystem' },
 ]
 
+function BillingSystemSheet({ enabled, onSave, onClose }) {
+  const [localEnabled, setLocalEnabled] = useState(enabled)
+
+  return (
+    <div className="smp-sheet-overlay" onClick={onClose}>
+      <div className="smp-sheet" onClick={e => e.stopPropagation()}>
+        <div className="smp-sheet-grabber" />
+        <h2 className="smp-sheet-title">帳務系統</h2>
+
+        <div className="smp-sheet-copy">
+          <p>若不使用帳務系統，則建立租約時，系統會自動略過帳務設定的流程。</p>
+          <p>此設定不會影響帳單列表，您仍可視需求新增帳單。</p>
+        </div>
+
+        <div className="smp-sheet-options">
+          <label className="smp-sheet-option">
+            <input
+              type="radio"
+              name="billingSystem"
+              className="smp-radio-input"
+              checked={localEnabled}
+              onChange={() => setLocalEnabled(true)}
+            />
+            <span className="smp-radio-dot" />
+            <span className="smp-option-label">啟用帳務系統</span>
+          </label>
+          <label className="smp-sheet-option">
+            <input
+              type="radio"
+              name="billingSystem"
+              className="smp-radio-input"
+              checked={!localEnabled}
+              onChange={() => setLocalEnabled(false)}
+            />
+            <span className="smp-radio-dot" />
+            <span className="smp-option-label">不使用帳務系統</span>
+          </label>
+        </div>
+
+        <button className="smp-sheet-save" type="button" onClick={() => onSave(localEnabled)}>
+          儲存
+        </button>
+      </div>
+    </div>
+  )
+}
+
 /**
  * SystemModulesPage — 系統模組設定頁
  * Figma: 11.5.4_系統模組設定 (node 1521:97077)
@@ -13,8 +61,21 @@ const CELLS = [
  * Props:
  *   onBack       {function} () => void
  *   onCellSelect {function} (action: string) => void
+ *   onSaved      {function} () => void
  */
-export default function SystemModulesPage({ onBack, onCellSelect }) {
+export default function SystemModulesPage({ onBack, onCellSelect, onSaved }) {
+  const [billingSystemEnabled, setBillingSystemEnabled] = useState(true)
+  const [showBillingSheet, setShowBillingSheet] = useState(false)
+
+  const handleCellClick = action => {
+    if (action === 'billingSystem') {
+      setShowBillingSheet(true)
+      return
+    }
+
+    onCellSelect?.(action)
+  }
+
   return (
     <div className="smp-page">
 
@@ -53,10 +114,12 @@ export default function SystemModulesPage({ onBack, onCellSelect }) {
       <div className="smp-scroll">
         <div className="smp-table">
           {CELLS.map(cell => (
-            <button key={cell.action} className="smp-cell" onClick={() => onCellSelect?.(cell.action)}>
+            <button key={cell.action} className="smp-cell" onClick={() => handleCellClick(cell.action)}>
               <span className="smp-cell-label">{cell.label}</span>
               <span className="smp-cell-info">
-                <span className="smp-cell-value">{cell.value}</span>
+                <span className={`smp-cell-value${billingSystemEnabled ? '' : ' smp-cell-value--disabled'}`}>
+                  {billingSystemEnabled ? cell.value : '未啟用'}
+                </span>
                 <img src={icBasicArrowNext} alt="" className="smp-cell-arrow" />
               </span>
             </button>
@@ -64,6 +127,17 @@ export default function SystemModulesPage({ onBack, onCellSelect }) {
         </div>
       </div>
 
+      {showBillingSheet && (
+        <BillingSystemSheet
+          enabled={billingSystemEnabled}
+          onClose={() => setShowBillingSheet(false)}
+          onSave={enabled => {
+            setBillingSystemEnabled(enabled)
+            setShowBillingSheet(false)
+            onSaved?.()
+          }}
+        />
+      )}
     </div>
   )
 }
